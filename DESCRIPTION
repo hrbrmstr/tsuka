@@ -13,6 +13,16 @@ Encoding: UTF-8
 License: AGPL
 Suggests: covr, tinytest
 Depends: R (>= 3.2.0)
-Imports: httr, jsonlite
+Imports: 
+    httr,
+    jsonlite,
+    Rcpp,
+    magrittr,
+    tibble,
+    dplyr,
+    tidyr,
+    purrr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
+LinkingTo: 
+    Rcpp

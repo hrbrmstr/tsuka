@@ -1,18 +1,14 @@
 ---
 output: rmarkdown::github_document
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 ```{r pkg-knitr-opts, include=FALSE}
-knitr:: sopts_chunk$set(
+knitr::opts_chunk$set(
   collapse = TRUE, fig.retina = 2, message = FALSE, warning = FALSE
 )
 options(width=120)
 ```
-
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/tsuka.svg?branch=master)](https://travis-ci.org/hrbrmstr/tsuka) 
-[![Coverage Status](https://codecov.io/gh/hrbrmstr/tsuka/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/tsuka)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tsuka)](https://cran.r-project.org/package=tsuka)
 
 # tsuka
 
@@ -20,13 +16,13 @@ options(width=120)
 
 ## What's Inside The Tin
 
+You need to install <https://github.com/hackers-painters/katana-parser> as a system library that is reachable by the R compilation defaults.
+
+In `src/` there are some header files copied from the `katana` src which enable use of the same utility functions they use.
+
 The following functions are implemented:
 
-## Installation
-
-```{r install-ex, results='asis', echo = FALSE}
-hrbrpkghelpr::install_block()
-```
+- `parse_css`: parse a CSS file into a data frame
 
 ## Usage
 
@@ -36,6 +32,10 @@ library(tsuka)
 # current version
 packageVersion("tsuka")
 
+```
+
+```{r}
+parse_css(system.file("extdat/sample.css", package = "tsuka"))
 ```
 
 ## tsuka Metrics
