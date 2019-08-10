@@ -17,7 +17,7 @@ hrbrpkghelpr::yank_title_and_description()
 
 ## SOME IMPORTANT DETAILS
 
-Threw this together for [\@clauswilke](https://github.com/clauswilke) & [{ggtext}](https://github.com/clauswilke/ggtext) based on [this Twitter convo](https://twitter.com/hrbrmstr/status/1159920814801731586). I am unlikely to work on this more w/o serious prodding.
+Threw this together for [\@clauswilke](https://github.com/clauswilke) & [{ggtext}](https://github.com/clauswilke/ggtext) based on [this Twitter convo](https://twitter.com/hrbrmstr/status/1159920814801731586). I am unlikely to work on this more w/o serious prodding. It only handles CSS style rules and need 7 other enums covered from [`katana`](https://github.com/hackers-painters/katana-parser/blob/master/src/katana.h#L38-L48), plus the core cpp code need to be refactored into functions.
 
 You need to install the [`katana`](https://github.com/hackers-painters/katana-parser) C99 parser as a system library that is reachable by the R source package compilation defaults. It looks to be pretty straightforward to embed the `katana` source into a C[++]-backed R package but that wasn't the point of this exercise.
 
@@ -47,7 +47,35 @@ packageVersion("tsuka")
 ```
 
 ```{r ex1}
-parse_css(system.file("extdat/sample.css", package = "tsuka"))
+"
+/* Applies to the entire body of the HTML document (except where overridden by more specific
+selectors). */
+body {
+  margin: 25px;
+  background-color: rgb(240,240,240);
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Applies to all <h1>...</h1> elements. */
+h1 {
+  font-size: 35px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+/* Applies to all elements with <... class='someclass'> specified. */
+.someclass { color: red; }
+
+/* Applies to the element with <... id='someid'> specified. */
+#someid { color: green; }
+" -> css_ex
+
+parse_css_text(css_ex)
+```
+
+```{r ex2}
+parse_css_file(system.file("extdat/sample.css", package = "tsuka"))
 ```
 
 ## tsuka Metrics

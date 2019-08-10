@@ -30,7 +30,10 @@ parse CSS content into data frames.
 Threw this together for [@clauswilke](https://github.com/clauswilke) &
 [{ggtext}](https://github.com/clauswilke/ggtext) based on [this Twitter
 convo](https://twitter.com/hrbrmstr/status/1159920814801731586). I am
-unlikely to work on this more w/o serious prodding.
+unlikely to work on this more w/o serious prodding. It only handles CSS
+style rules and need 7 other enums covered from
+[`katana`](https://github.com/hackers-painters/katana-parser/blob/master/src/katana.h#L38-L48),
+plus the core cpp code need to be refactored into functions.
 
 You need to install the
 [`katana`](https://github.com/hackers-painters/katana-parser) C99 parser
@@ -45,6 +48,9 @@ enable use of the same utility functions they use.
 ## What’s Inside The Tin
 
 The following functions are implemented:
+
+  - `parse_css_file`: Parse a CSS file into a data frame
+  - `parse_css_text`: Parse CSS text intoa data frame
 
 ## Installation
 
@@ -73,7 +79,51 @@ packageVersion("tsuka")
 ```
 
 ``` r
-parse_css(system.file("extdat/sample.css", package = "tsuka"))
+"
+/* Applies to the entire body of the HTML document (except where overridden by more specific
+selectors). */
+body {
+  margin: 25px;
+  background-color: rgb(240,240,240);
+  font-family: arial, sans-serif;
+  font-size: 14px;
+}
+
+/* Applies to all <h1>...</h1> elements. */
+h1 {
+  font-size: 35px;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+/* Applies to all elements with <... class='someclass'> specified. */
+.someclass { color: red; }
+
+/* Applies to the element with <... id='someid'> specified. */
+#someid { color: green; }
+" -> css_ex
+
+parse_css_text(css_ex)
+```
+
+<div class="kable-table">
+
+| selectors  | property         | value                |
+| :--------- | :--------------- | :------------------- |
+| body       | margin           | 25px                 |
+| body       | background-color | rgb(240 , 240 , 240) |
+| body       | font-family      | arial , sans-serif   |
+| body       | font-size        | 14px                 |
+| h1         | font-size        | 35px                 |
+| h1         | font-weight      | normal               |
+| h1         | margin-top       | 5px                  |
+| .someclass | color            | red                  |
+| \#someid   | color            | green                |
+
+</div>
+
+``` r
+parse_css_file(system.file("extdat/sample.css", package = "tsuka"))
 ```
 
 <div class="kable-table">
@@ -317,10 +367,10 @@ parse_css(system.file("extdat/sample.css", package = "tsuka"))
 
 | Lang         | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :----------- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| C/C++ Header |        6 | 0.43 | 580 | 0.74 |         238 | 0.80 |      245 | 0.77 |
-| C++          |        2 | 0.14 | 168 | 0.22 |          32 | 0.11 |        7 | 0.02 |
-| R            |        5 | 0.36 |  22 | 0.03 |           9 | 0.03 |       33 | 0.10 |
-| Rmd          |        1 | 0.07 |   9 | 0.01 |          19 | 0.06 |       34 | 0.11 |
+| C/C++ Header |        6 | 0.43 | 580 | 0.72 |         238 | 0.77 |      245 | 0.74 |
+| C++          |        2 | 0.14 | 168 | 0.21 |          32 | 0.10 |        7 | 0.02 |
+| Rmd          |        1 | 0.07 |  29 | 0.04 |          24 | 0.08 |       37 | 0.11 |
+| R            |        5 | 0.36 |  27 | 0.03 |          15 | 0.05 |       40 | 0.12 |
 
 ## Code of Conduct
 
