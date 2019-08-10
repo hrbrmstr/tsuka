@@ -33,7 +33,11 @@ convo](https://twitter.com/hrbrmstr/status/1159920814801731586). I am
 unlikely to work on this more w/o serious prodding. It only handles CSS
 style rules and need 7 other enums covered from
 [`katana`](https://github.com/hackers-painters/katana-parser/blob/master/src/katana.h#L38-L48),
-plus the core cpp code need to be refactored into functions.
+plus the core cpp code need to be refactored into functions. Claus is
+more than capable of riffing off of the `katana` source (and I’ll gladly
+PR into that if needed), plus I’ve no desire to spend time building a
+massively general purpose R pacakge that has a chance of being
+steamrolled over by corporate-backed package development.
 
 You need to install the
 [`katana`](https://github.com/hackers-painters/katana-parser) C99 parser
