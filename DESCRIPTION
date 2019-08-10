@@ -1,16 +1,27 @@
 Package: tsuka
 Type: Package
-Title: tsuka title goes here otherwise CRAN checks fail
+Title: Parse Cascading Style Sheets
 Version: 0.1.0
 Date: 2019-08-09
-Authors@R: c( person("Bob", "Rudis", email = "bob@rud.is", role =
-        c("aut", "cre"), comment = c(ORCID = "0000-0001-5670-2640")) )
-Maintainer: Bob Rudis <bob@rud.is>
-Description: A good description goes here otherwise CRAN checks fail.
+Authors@R: c(
+      person(
+        "Bob", "Rudis", email = "bob@rud.is", role =c("aut", "cre"), 
+        comment = c(ORCID = "0000-0001-5670-2640")
+      ),
+      person(
+        "Hackers and Painters", email = "qfish.cn@gmail.com",
+        comment = c("katana-parser (<https://github.com/hackers-painters/katana-parser>)")
+      )
+    )
+Description: Cascading style sheets ("CSS") is a style sheet language used for 
+    describing the presentation of a document written in a markup language like 
+    HTML, and is designed to enable the separation of presentation and content, 
+    including layout, colors, and fonts. Tools are provided to parse CSS content
+    into data frames.
 URL: https://gitlab.com/hrbrmstr/tsuka
 BugReports: https://gitlab.com/hrbrmstr/tsuka/issues
 Encoding: UTF-8
-License: AGPL
+License: MIT + file LICENSE
 Suggests: covr, tinytest
 Depends: R (>= 3.2.0)
 Imports: 

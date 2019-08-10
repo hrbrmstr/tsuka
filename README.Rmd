@@ -1,29 +1,41 @@
 ---
-output: rmarkdown::github_document
-editor_options: 
-  chunk_output_type: console
+output: 
+  rmarkdown::github_document:
+    df_print: kable
 ---
 ```{r pkg-knitr-opts, include=FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE, fig.retina = 2, message = FALSE, warning = FALSE
-)
-options(width=120)
+hrbrpkghelpr::global_opts()
 ```
 
-# tsuka
+```{r badges, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::stinking_badges(repo_status = "Concept")
+```
 
-## Description
+```{r description, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::yank_title_and_description()
+```
 
-## What's Inside The Tin
+## SOME IMPORTANT DETAILS
 
-You need to install <https://github.com/hackers-painters/katana-parser> as a system library that is reachable by the R compilation defaults.
+Threw this together for [\@clauswilke](https://github.com/clauswilke) & [{ggtext}](https://github.com/clauswilke/ggtext) based on [this Twitter convo](https://twitter.com/hrbrmstr/status/1159920814801731586). I am unlikely to work on this more w/o serious prodding.
+
+You need to install the [`katana`](https://github.com/hackers-painters/katana-parser) C99 parser as a system library that is reachable by the R source package compilation defaults. It looks to be pretty straightforward to embed the `katana` source into a C[++]-backed R package but that wasn't the point of this exercise.
 
 In `src/` there are some header files copied from the `katana` src which enable use of the same utility functions they use.
 
+## What's Inside The Tin
+
 The following functions are implemented:
 
-- `parse_css`: parse a CSS file into a data frame
+```{r ingredients, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::describe_ingredients()
+```
 
+## Installation
+
+```{r install-ex, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::install_block()
+```
 ## Usage
 
 ```{r lib-ex}
@@ -34,7 +46,7 @@ packageVersion("tsuka")
 
 ```
 
-```{r}
+```{r ex1}
 parse_css(system.file("extdat/sample.css", package = "tsuka"))
 ```
 

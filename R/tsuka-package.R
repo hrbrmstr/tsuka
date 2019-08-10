@@ -1,7 +1,10 @@
-#' ...
+#' Parse Cascading Style Sheets
 #'
-#' - URL: <https://gitlab.com/hrbrmstr/tsuka>
-#' - BugReports: <https://gitlab.com/hrbrmstr/tsuka/issues>
+#' Cascading style sheets ("CSS") is a style sheet language used for
+#' describing the presentation of a document written in a markup language like
+#' HTML, and is designed to enable the separation of presentation and content,
+#' including layout, colors, and fonts. Tools are provided to parse CSS content
+#' into data frames.
 #'
 #' @md
 #' @name tsuka

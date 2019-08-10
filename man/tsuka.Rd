@@ -4,12 +4,13 @@
 \name{tsuka}
 \alias{tsuka}
 \alias{tsuka-package}
-\title{...}
+\title{Parse Cascading Style Sheets}
 \description{
-\itemize{
-\item URL: \url{https://gitlab.com/hrbrmstr/tsuka}
-\item BugReports: \url{https://gitlab.com/hrbrmstr/tsuka/issues}
-}
+Cascading style sheets ("CSS") is a style sheet language used for
+describing the presentation of a document written in a markup language like
+HTML, and is designed to enable the separation of presentation and content,
+including layout, colors, and fonts. Tools are provided to parse CSS content
+into data frames.
 }
 \seealso{
 Useful links:
